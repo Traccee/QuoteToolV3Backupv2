@@ -1,0 +1,42 @@
+const express = require("express");
+const cors = require("cors");
+const path = require("path");
+
+require("./database");
+const { calculateQuote } = require("./pricingEngine");
+
+const app = express();
+
+app.use(cors());
+app.use(express.json());
+
+// Serve static React files
+app.use(express.static(path.join(__dirname, "../client/dist")));
+
+app.post("/quote", (req, res) => {
+  try {
+    console.log("REQ BODY:", req.body);
+
+    const quote = calculateQuote(req.body);
+
+    console.log("PLAN MONTHLY OUT:", quote.breakdown.planMonthly);
+    console.log("PLAN KEY OUT:", quote.breakdown.planKey);
+    console.log("REQ PLAN:", JSON.stringify(req.body.plan));
+
+    res.json(quote);
+  } catch (err) {
+    console.error("Quote error:", err);
+    res.status(500).json({ error: err?.message || "Quote calculation failed" });
+  }
+});
+
+// Fallback to React app for any unmatched routes
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/dist/index.html"));
+});
+
+const PORT = process.env.PORT || 3001;
+
+app.listen(PORT, () => {
+  console.log(`✅ Server running at port ${PORT}`);
+});
