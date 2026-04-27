@@ -121,63 +121,64 @@ if (!promoExists("ID260107")) {
   console.log("ID260107");
 }
 
-db.prepare(`
-  INSERT INTO promotions (
-    id, name, requires_trade, requiresAAL, requiresPort, trade_condition,
-    max_payout, eligible_new_devices, required_plans, required_segments
-  )
-  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-`).run(
-  "ID250567",
-  "$300 Off iPhone 17 (Trade + AAL, Essentials Only)",
-  1,              
-  1,             
-  0,              
-  "GOOD",
-  300,
-  JSON.stringify([
-    "iphone17",
-    "iphone17plus",
-    "iphone17pro",
-    "iphone17promax",
-    "iphone16",
-    "iphone16plus",
-    "iphone16pro",
-    "iphone16promax"
-  ]),
-  JSON.stringify(["essentials"]),
-  JSON.stringify(["Standard"])
-);
+if (!promoExists("ID250567")) {
+  db.prepare(`
+    INSERT INTO promotions (
+      id, name, requires_trade, requiresAAL, requiresPort, trade_condition,
+      max_payout, eligible_new_devices, required_plans, required_segments
+    )
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+  `).run(
+    "ID250567",
+    "$300 Off iPhone 17 (Trade + AAL, Essentials Only)",
+    1,              
+    1,             
+    0,              
+    "GOOD",
+    300,
+    JSON.stringify([
+      "iphone17",
+      "iphone17plus",
+      "iphone17pro",
+      "iphone17promax",
+      "iphone16",
+      "iphone16plus",
+      "iphone16pro",
+      "iphone16promax"
+    ]),
+    JSON.stringify(["essentials"]),
+    JSON.stringify(["Standard"])
+  );
 
+  db.prepare(`
+    INSERT INTO trade_tiers (promo_id, payout, models)
+    VALUES (?, ?, ?)
+  `).run(
+    "ID250567",
+    300,
+    JSON.stringify([
+      "iphone13pro","iphone13promax",
+      "iphone14","iphone14plus","iphone14pro","iphone14promax",
+      "iphone15","iphone15plus","iphone15pro","iphone15promax",
+      "iphone16","iphone16plus","iphone16pro","iphone16promax",
+      "iphone12pro","iphone12promax"
+    ])
+  );
 
-db.prepare(`
-  INSERT INTO trade_tiers (promo_id, payout, models)
-  VALUES (?, ?, ?)
-`).run(
-  "ID250567",
-  300,
-  JSON.stringify([
-    "iphone13pro","iphone13promax",
-    "iphone14","iphone14plus","iphone14pro","iphone14promax",
-    "iphone15","iphone15plus","iphone15pro","iphone15promax",
-    "iphone16","iphone16plus","iphone16pro","iphone16promax",
-    "iphone12pro","iphone12promax"
-  ])
-);
-
-db.prepare(`
-  INSERT INTO trade_tiers (promo_id, payout, models)
-  VALUES (?, ?, ?)
-`).run(
-  "ID250567",
-  150,
-  JSON.stringify([
-    "iphone6","iphone7","iphone8",
-    "iphonex","iphonexr","iphonexs","iphonexsmax",
-    "iphone11","iphone11pro","iphone11promax",
-    "iphone12","iphone12mini","iphoneSE2","iphoneSE3"
-  ])
-);
+  db.prepare(`
+    INSERT INTO trade_tiers (promo_id, payout, models)
+    VALUES (?, ?, ?)
+  `).run(
+    "ID250567",
+    150,
+    JSON.stringify([
+      "iphone6","iphone7","iphone8",
+      "iphonex","iphonexr","iphonexs","iphonexsmax",
+      "iphone11","iphone11pro","iphone11promax",
+      "iphone12","iphone12mini","iphoneSE2","iphoneSE3"
+    ])
+  );
+}
 
 
 

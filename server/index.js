@@ -31,7 +31,7 @@ app.post("/quote", (req, res) => {
 });
 
 // Fallback to React app for any unmatched routes
-app.get("*", (req, res) => {
+app.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/dist/index.html"));
 });
 
