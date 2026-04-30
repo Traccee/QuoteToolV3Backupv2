@@ -1,10 +1,10 @@
 body {
   margin: 0;
   background:
-    radial-gradient(circle at top, rgba(255, 105, 180, 0.12), transparent 30%),
-    linear-gradient(180deg, #121212 0%, #0e0e0f 100%);
+   radial-gradient(circle at top, rgba(255, 105, 180, 0.12), transparent 30%),
+       linear-gradient(90deg, #121212 20%, #0e0e0f 100%);
   color: #ffffff;
-  font-family: Arial, sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 .container {
@@ -13,26 +13,25 @@ body {
   padding: 0 20px 32px;
 }
 
-.page-title {
-  margin-bottom: 20px;
-  color: #ff8fc7;
-  letter-spacing: 0.5px;
+.mainTitle {
+  margin-bottom: 30px;
+  color: #ff97cf;
+  letter-spacing: 0.7px;
 }
-
-.app-layout {
+.createsTwoComlumnlayout {
   display: grid;
   grid-template-columns: minmax(0, 2fr) minmax(320px, 1fr);
   gap: 24px;
   align-items: start;
 }
-
-.left-column,
-.right-column {
+.daLeftColumn,
+.andDaRightColumn {
   min-width: 0;
 }
+ 
 
-.panel {
-  border: 1px solid #3a2940;
+.card, .lineCard {
+  border: 7px solid #3a2940;
   border-radius: 14px;
   padding: 18px;
   margin: 0 0 18px 0;
@@ -40,38 +39,32 @@ body {
   box-shadow: 0 0 0 1px rgba(255, 105, 180, 0.05), 0 10px 30px rgba(0, 0, 0, 0.25);
 }
 
-.line-panel h2,
-.quote-panel h2,
-.panel h2 {
+
+.lineCard h2, 
+ .quotecard h2,
+.card h2 {
   margin-top: 0;
-  color: #ff9ed1;
+  color: #ff97cf;
 }
 
-label {
-  display: block;
-  margin-top: 12px;
-  font-weight: 600;
-  color: #ffd2e8;
-}
+
+label { display: block; margin-top: 12px; font-weight: 600; color: #ffd2e8; }
 
 select,
-input {
-  width: 100%;
+input { width: 100%;
   padding: 10px 12px;
-  margin-top: 6px;
-  border-radius: 10px;
+ margin-top: 6px; border-radius: 10px;
   border: 1px solid #5a3a52;
   background: #2a2a31;
   color: white;
   box-sizing: border-box;
   outline: none;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;}
 
 select:focus,
 input:focus {
   border-color: #ff73b3;
-  box-shadow: 0 0 0 3px rgba(255, 115, 179, 0.15);
+  box-shadow: 0 0 0 7.5px rgba(253, 115, 179, 0.15);  
 }
 
 hr {
@@ -80,71 +73,62 @@ hr {
   border-top: 1px solid #3a2940;
 }
 
-.quote-panel {
+.quotecard{
   position: sticky;
   top: 20px;
 }
 
 .summary-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.1fr 1fr;
   gap: 12px;
 }
 
-.summary-card {
+.summaryCardofThe4totals {
   background: #24242b;
-  border: 1px solid #4b3143;
+  border: 1.1px solid #493142;
   border-radius: 12px;
-  padding: 12px;
+  border-left: 2px solid #ff5ca8;
+  padding: 15px;
+  margin-bottom: 6px;
 }
 
-.summary-label {
+.summarylabelofThe4totals {
   display: block;
-  font-size: 0.85rem;
+  font-size: 1.24rem;
   color: #ffb7d9;
   margin-bottom: 6px;
 }
 
-.summary-value {
+.summaryvalueof4totals{
   font-size: 1.15rem;
   font-weight: 700;
-  color: #ffffff;
+  color: #e0d0d0;
 }
 
-.section-title {
-  color: #ff9ed1;
+ .detailPerLine {
+  color: #ff9dd1;
   margin-bottom: 12px;
 }
 
 .quote-line-card {
-  background: #232329;
+  background: #31313a;
   border: 1px solid #493142;
-  border-left: 4px solid #ff5ca8;
-  border-radius: 12px;
+  border-left: 3.1px solid #ff5ca8;
+  border-top: 3.1px solid #ff5ca8;
+  border-radius: 12.5px;
   padding: 14px;
-  margin-bottom: 12px;
+  margin-bottom: 12.5px;
 }
 
 .quote-line-card p {
   margin: 6px 0;
 }
 
-.error-text {
-  color: #ff6b81;
-}
 
-.total {
-  margin-top: 18px;
-  color: #ff73b3;
-  font-size: 1.6rem;
-}
+.monthlyTotal {margin-top: 18.1px;  color: #ff73b3; font-size: 2.76rem; font-weight: 650;}
 
-@media (max-width: 980px) {
-  .app-layout {
+@media (max-width: 981px) {
+  .createsTwoComlumnlayout {
     grid-template-columns: 1fr;
-  }
-
-  .quote-panel {
-    position: static;
-  }
-}
+  } .quotecard { position: static;}}
