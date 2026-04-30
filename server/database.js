@@ -8,10 +8,10 @@ db.exec(`
   CREATE TABLE IF NOT EXISTS promotions (
     id TEXT PRIMARY KEY,
     name TEXT,
-    requires_trade INTEGER,
+    needsTrade INTEGER,
     requiresAAL INTEGER,
     requiresPort INTEGER,
-    trade_condition TEXT,
+    tradecondition TEXT,
     max_payout INTEGER,
     eligible_new_devices TEXT,
     required_plans TEXT,
@@ -27,7 +27,7 @@ db.exec(`
 `);
 
 function promoExists(id) {
-  return db.prepare("SELECT * FROM promotions WHERE id = ?").get(id);
+  return db.prepare("SELECT *  FROM promotions WHERE id = ?").get(id);
 }
 
 
@@ -36,7 +36,7 @@ function promoExists(id) {
 if (!promoExists("ID260107")) {
   db.prepare(`
     INSERT INTO promotions (
-      id, name, requires_trade, requiresAAL, requiresPort, trade_condition,
+      id, name, needsTrade, requiresAAL, requiresPort, tradecondition,
       max_payout, eligible_new_devices, required_plans, required_segments
     )
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
@@ -124,7 +124,7 @@ if (!promoExists("ID260107")) {
 if (!promoExists("ID250567")) {
   db.prepare(`
     INSERT INTO promotions (
-      id, name, requires_trade, requiresAAL, requiresPort, trade_condition,
+      id, name, needsTrade, requiresAAL, requiresPort, tradecondition ,
       max_payout, eligible_new_devices, required_plans, required_segments
     )
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
@@ -199,7 +199,7 @@ if (!promoExists("ID250567")) {
 if (!promoExists("ID260106")) {
   db.prepare(`
     INSERT INTO promotions (
-      id, name, requires_trade, requiresAAL, requiresPort, trade_condition,
+      id, name, needsTrade, requiresAAL, requiresPort, tradecondition ,
       max_payout, eligible_new_devices, required_plans, required_segments
     )
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
@@ -287,13 +287,10 @@ if (!promoExists("ID260106")) {
   console.log("ID260106");
 }
 
-// ID250513
-if (!promoExists("ID250513")) {
-  db.prepare(`
-    INSERT INTO promotions (
-      id, name, requires_trade, requiresAAL, requiresPort, trade_condition,
-      max_payout, eligible_new_devices, required_plans, required_segments
-    )
+
+if (!promoExists("ID250513")) {db.prepare(`
+    INSERT INTO promotions (id, name, needsTrade, requiresAAL, requiresPort, tradecondition,
+       max_payout, eligible_new_devices, required_plans, required_segments)
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
   `).run(
     "ID250513",
@@ -319,7 +316,7 @@ if (!promoExists("ID250513")) {
 if (!promoExists("ID250512")) {
   db.prepare(`
     INSERT INTO promotions (
-      id, name, requires_trade, requiresAAL, requiresPort, trade_condition,
+      id, name, needsTrade, requiresAAL, requiresPort, tradecondition ,
       max_payout, eligible_new_devices, required_plans, required_segments
     )
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
@@ -346,7 +343,7 @@ if (!promoExists("ID250512")) {
 if (!promoExists("ID250985")) {
   db.prepare(`
     INSERT INTO promotions (
-      id, name, requires_trade, requiresAAL, requiresPort, trade_condition,
+      id, name, needsTrade, requiresAAL, requiresPort, tradecondition,
       max_payout, eligible_new_devices, required_plans, required_segments
     )
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
@@ -371,7 +368,7 @@ if (!promoExists("ID250985")) {
 if (!promoExists("ID250983")) {
   db.prepare(`
     INSERT INTO promotions (
-      id, name, requires_trade, requiresAAL, requiresPort, trade_condition,
+      id, name, needsTrade, requiresAAL, requiresPort,tradecondition,
       max_payout, eligible_new_devices, required_plans, required_segments
     )
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
@@ -396,7 +393,7 @@ if (!promoExists("ID250983")) {
 if (!promoExists("ID250069")) {
   db.prepare(`
     INSERT INTO promotions (
-      id, name, requires_trade, requiresAAL, requiresPort, trade_condition,
+      id, name, needsTrade, requiresAAL, requiresPort, tradecondition,
       max_payout, eligible_new_devices, required_plans, required_segments
     )
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
@@ -420,7 +417,7 @@ if (!promoExists("ID250069")) {
 if (!promoExists("ID250681")) {
   db.prepare(`
     INSERT INTO promotions (
-      id, name, requires_trade, requiresAAL, requiresPort, trade_condition,
+      id, name, needsTrade, requiresAAL, requiresPort, tradecondition,
       max_payout, eligible_new_devices, required_plans, required_segments
     )
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
@@ -443,7 +440,7 @@ if (!promoExists("ID250681")) {
 if (!promoExists("ID250980")) {
   db.prepare(`
     INSERT INTO promotions (
-      id, name, requires_trade, requiresAAL, requiresPort, trade_condition,
+      id, name, needsTrade, requiresAAL, requiresPort, tradecondition,
       max_payout, eligible_new_devices, required_plans, required_segments
     )
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
@@ -461,14 +458,14 @@ if (!promoExists("ID250980")) {
     JSON.stringify(["Standard", "MIL_FR_55"])
   );
 
-  console.log("✅ Seeded ID250980 into DB");
+  console.log("ID250980");
 }
 
 
 if (!promoExists("ID250820")) {
   db.prepare(`
     INSERT INTO promotions (
-      id, name, requires_trade, requiresAAL, requiresPort, trade_condition,
+      id, name, needsTrade, requiresAAL, requiresPort, tradecondition,
       max_payout, eligible_new_devices, required_plans, required_segments
     )
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
@@ -495,11 +492,11 @@ if (!promoExists("ID250820")) {
 
 
 
-// ID250990
+
 if (!promoExists("ID250990")) {
   db.prepare(`
     INSERT INTO promotions (
-      id, name, requires_trade, requiresAAL, requiresPort, trade_condition,
+      id, name, needsTrade , requiresAAL, requiresPort, tradecondition,
       max_payout, eligible_new_devices, required_plans, required_segments
     )
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
@@ -520,11 +517,10 @@ if (!promoExists("ID250990")) {
   console.log("ID250990");
 }
 
-// ID250689
 if (!promoExists("ID250689")) {
   db.prepare(`
     INSERT INTO promotions (
-      id, name, requires_trade, requiresAAL, requiresPort, trade_condition,
+      id, name, needsTrade , requiresAAL, requiresPort, tradecondition,
       max_payout, eligible_new_devices, required_plans, required_segments
     )
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
@@ -544,11 +540,11 @@ if (!promoExists("ID250689")) {
   console.log("ID250689");
 }
 
-// ID260010
+
 if (!promoExists("ID260010")) {
   db.prepare(`
     INSERT INTO promotions (
-      id, name, requires_trade, requiresAAL, requiresPort, trade_condition,
+      id, name, needsTrade, requiresAAL, requiresPort, tradecondition ,
       max_payout, eligible_new_devices, required_plans, required_segments
     )
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
@@ -575,11 +571,11 @@ if (!promoExists("ID260010")) {
   console.log("ID260010");
 }
 
-// ID250176
+
 if (!promoExists("ID250176")) {
   db.prepare(`
     INSERT INTO promotions (
-      id, name, requires_trade, requiresAAL, requiresPort, trade_condition,
+      id, name, needsTrade , requiresAAL, requiresPort, tradecondition,
       max_payout, eligible_new_devices, required_plans, required_segments
     )
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
@@ -601,7 +597,7 @@ if (!promoExists("ID250176")) {
 if (!promoExists("ID250975")) {
   db.prepare(`
     INSERT INTO promotions (
-      id, name, requires_trade, requiresAAL, requiresPort, trade_condition,
+      id, name, needsTrade, requiresAAL, requiresPort, tradecondition,
       max_payout, eligible_new_devices, required_plans, required_segments
     )
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
@@ -683,11 +679,10 @@ if (!promoExists("ID250975")) {
 
 
 
-// ID260096
 if (!promoExists("ID260096")) {
   db.prepare(`
     INSERT INTO promotions (
-      id, name, requires_trade, requiresAAL, requiresPort, trade_condition,
+      id, name, needsTrade , requiresAAL, requiresPort, tradecondition,
       max_payout, eligible_new_devices, required_plans, required_segments
     )
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)

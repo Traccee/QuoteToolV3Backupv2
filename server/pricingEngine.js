@@ -100,7 +100,7 @@ function getPromoCreditFromDb(lineItem, accountInfo, planInfo) {
                   {promoFailReason = "there was no trade model that was ever attached " ; continue; }
 
                   
-              if (promo.trade_condition == "GOOD"){
+              if (promo.tradecondition == "GOOD"){
                     
               if (lineItem.tradeCondition !== "GOOD") { promoFailReason  = "trade in condition was not good" ; continue;}}}  
                     
@@ -121,14 +121,14 @@ function getPromoCreditFromDb(lineItem, accountInfo, planInfo) {
 
           let promoValue= 0; 
           //applies non trade promo credit if promo doesnt need any trade in 
-              if (!promo.requires_trade)
+              if (!promo.needsTrade)
               { promoValue = promo.max_payout;}
           //however if promo does require trade in it will check 
           // the tiers for said promo and see which tier fits based on the trade model then apply that max payout for the device
               else { const tiers = db .prepare("SELECT * FROM trade_tiers WHERE promo_id = ?").all(promo.id) ;
               for (const tier of tiers) {
-                 const models = JSON.parse(tier.models);
-                   if (models.includes(lineItem.tradeModel)) {
+                 const models = JSON.parse(tier.models).map(m=> m.toLowerCase());
+                   if (models.includes(lineItem.tradeModel.toLowerCase( ))) {
                    if (tier.payout > bestPromo.promoCredit) {  
             bestPromo = { promoName: promo.name, promoCredit: tier.payout };
           }
@@ -145,6 +145,11 @@ function getPromoCreditFromDb(lineItem, accountInfo, planInfo) {
   return bestPromo;  
 }  
 
+
+function monthlyInterwebs(dainternetPlan) {
+  const planKey = String(dainternetPlan || "").trim().toLowerCase();
+  return daInternet[planKey] ?? 0;
+}
 
 function calculateQuote(input) {
    if (!Array.isArray(input.lineItems)){
